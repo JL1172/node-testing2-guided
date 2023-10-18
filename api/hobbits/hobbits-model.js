@@ -13,17 +13,20 @@ function getAll() {
 }
 
 function getById(id) {
-  return null
+  return db("hobbits").where("id",id).first();
 }
 
 async function insert(hobbit) {
-  return null
+  const [result] = await db("hobbits").insert(hobbit);
+  return getById(result)
 }
 
 async function update(id, changes) {
-  return null
+  const [result] = await db("hobbits").update(changes).where("id",id);
+  return getById(result); 
 }
 
 function remove(id) {
-  return null
+  const result = db('hobbits').delete().where("id",id);
+  return result; 
 }

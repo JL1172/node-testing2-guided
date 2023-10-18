@@ -22,11 +22,11 @@ async function insert(hobbit) {
 }
 
 async function update(id, changes) {
-  const [result] = await db("hobbits").update(changes).where("id",id);
+  const result = await db("hobbits").update(changes).where("id",id);
   return getById(result); 
 }
 
-function remove(id) {
-  const result = db('hobbits').delete().where("id",id);
-  return result; 
+async function remove(id) {
+  await db('hobbits').where("id",id).del();
+  return await getAll(); 
 }

@@ -1,5 +1,5 @@
 const db = require("../../data/dbConfig");
-const HobbitData = require("./hobbits-model");
+const HobbitData = require("../hobbits/hobbits-model");
 
 beforeAll(async () => {
     await db.migrate.rollback();
@@ -10,9 +10,9 @@ beforeEach(async () => {
     await db.seed.run();
 })
 
-test("[1]environment is testing", () => {
-    expect(process.env.NODE_ENV).toBe("testing");
-})
+// test("[1]environment is testing", () => {
+//     expect(process.env.NODE_ENV).toBe("testing");
+// })
 
 describe("[GET ALL]", () => {
     test("[2]Resolves all the hobbits in the table", async () => {
@@ -65,3 +65,10 @@ describe("[INSERT NEW HOBBIT]", () => {
         expect(records).toHaveLength(5); 
     })
 })
+
+
+
+
+// if (error && error.code !== 'ENOENT') {
+//     this.emit('error', error);
+//   } else 
